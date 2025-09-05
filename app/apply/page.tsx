@@ -54,7 +54,7 @@ export default function ApplyPage() {
             <div style={{paddingLeft: "20px", paddingRight: "20px", paddingTop: "10px", paddingBottom: "10px", justifyContent: "flex-start", alignItems: "center", gap: "10px", display: "flex"}}>
               <div style={{width: "762px"}}>
                 <span style={{color: "black", fontSize: "18px", fontFamily: "Pretendard", fontWeight: "700", lineHeight: "25px", wordWrap: "break-word"}}>관악구 소재 </span>
-                <span style={{color: "#0088FF", fontSize: "18px", fontFamily: "Pretendard", fontWeight: "700", textDecoration: "underline", lineHeight: "25px", wordWrap: "break-word"}}>소상공인(상시근로자수 '5인 미만') 가게</span>
+                <span style={{color: "#0088FF", fontSize: "18px", fontFamily: "Pretendard", fontWeight: "700", textDecoration: "underline", lineHeight: "25px", wordWrap: "break-word"}}>소상공인(상시근로자수 &apos;5인 미만&apos;) 가게</span>
                 <span style={{color: "black", fontSize: "18px", fontFamily: "Pretendard", fontWeight: "700", lineHeight: "25px", wordWrap: "break-word"}}>로서, 온라인 홍보방법이 매장환경이 매출에 큰 영향을 미치는 가게 입니까?       </span>
                 <span style={{color: "black", fontSize: "18px", fontFamily: "Pretendard", fontWeight: "500", lineHeight: "25px", wordWrap: "break-word"}}>※ 매장형이 아닌 업체(예 - 사무실, 병원 등) 지원 불가       ※ 광업•제조업•건설 및   운수업: 상시근로자 10명 미만</span>
               </div>
@@ -237,7 +237,7 @@ export default function ApplyPage() {
             <div style={{width: "1085px", paddingLeft: "30px", paddingRight: "30px", paddingTop: "10px", paddingBottom: "10px", justifyContent: "flex-start", alignItems: "center", gap: "10px", display: "flex"}}>
               <div style={{width: "1025px"}}>
                 <span style={{color: "#0088FF", fontSize: "18px", fontFamily: "Pretendard", fontWeight: "400", lineHeight: "25px", wordWrap: "break-word"}}>※ </span>
-                <span style={{color: "#0088FF", fontSize: "18px", fontFamily: "Pretendard", fontWeight: "700", lineHeight: "25px", wordWrap: "break-word"}}>선택사항에 '아니요'가 있을 경우, 사업에 선정되지 않을 수 있습니다.<br/></span>
+                <span style={{color: "#0088FF", fontSize: "18px", fontFamily: "Pretendard", fontWeight: "700", lineHeight: "25px", wordWrap: "break-word"}}>선택사항에 &apos;아니요&apos;가 있을 경우, 사업에 선정되지 않을 수 있습니다.<br/></span>
                 <span style={{color: "#0088FF", fontSize: "18px", fontFamily: "Pretendard", fontWeight: "400", lineHeight: "25px", wordWrap: "break-word"}}>※ </span>
                 <span style={{color: "#0088FF", fontSize: "18px", fontFamily: "Pretendard", fontWeight: "700", lineHeight: "25px", wordWrap: "break-word"}}>신청 시, 사업자등록증을 필수 제출하여야 하며, 대표자가 관악구 거주자일 경우 주민등록초본(*현재 주소지만 포함, 주민등록번호 미포함)을 제출해야 합니다.<br/></span>
                 <span style={{color: "black", fontSize: "18px", fontFamily: "Pretendard", fontWeight: "600", lineHeight: "25px", wordWrap: "break-word"}}>    상기 신청자는 &lt;관악구 소상공인 온라인 마케팅 홍보지원 사업&gt;</span>

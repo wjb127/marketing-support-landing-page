@@ -714,7 +714,7 @@ export default function ApplicationForm() {
                 </label>
                 <div style={{width: "551px", height: "57px", paddingLeft: "10px", paddingRight: "10px", paddingTop: "5px", paddingBottom: "5px", left: "513px", top: "0.38px", position: "absolute", background: "white", outline: "1px white solid", outlineOffset: "-1px", justifyContent: "center", alignItems: "center", gap: "10px", display: "inline-flex"}}>
                   <div style={{width: "543px", height: "48px", color: "black", fontSize: "16px", fontFamily: "Pretendard", fontWeight: 500, lineHeight: "25px", wordWrap: "break-word"}}>
-                    주민등록초본(대표자의 주민등록이 관악구에 등록된 경우)<br/>※ '과거주소', '주민등록번호 뒷자리' 미포함
+                    주민등록초본(대표자의 주민등록이 관악구에 등록된 경우)<br/>※ &apos;과거주소&apos;, &apos;주민등록번호 뒷자리&apos; 미포함
                   </div>
                 </div>
               </div>
