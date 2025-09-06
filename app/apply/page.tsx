@@ -44,11 +44,6 @@ export default function ApplyPage() {
             </div>
           </div>
 
-          <div className="w-full lg:absolute lg:left-[515px] lg:top-[108px] text-center mt-4 lg:mt-0 flex justify-center">
-            <div className="text-black text-lg sm:text-xl lg:text-2xl font-bold font-['Pretendard']">
-              신청 절차 사각으로 하기
-            </div>
-          </div>
 
           {/* Question 1 */}
           <div className="w-full lg:w-[1105px] mx-auto lg:mx-0 lg:absolute lg:left-[162px] lg:top-[366px] mt-12 lg:mt-0">
