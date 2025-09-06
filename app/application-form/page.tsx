@@ -6,9 +6,11 @@ import { useRouter } from "next/navigation";
 
 export default function ApplicationForm() {
   const router = useRouter();
+  const [mounted, setMounted] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
@@ -120,8 +122,8 @@ export default function ApplicationForm() {
       <div className="bg-white w-full max-w-[1440px] mx-auto">
         <InformationSection />
         
-        {/* Mobile Version */}
-        {isMobile ? (
+        {/* Mobile Version - Only render after mount to avoid hydration mismatch */}
+        {mounted && isMobile ? (
           <div className="w-full px-4 py-5">
             <div className="w-full py-5">
               <div className="text-center">
@@ -160,20 +162,26 @@ export default function ApplicationForm() {
                 </div>
               </div>
               
-              <div className="flex justify-end items-center gap-2 text-sm font-semibold mb-3">
+              <div className="flex flex-col items-end gap-2 text-sm font-semibold mb-3">
                 <span>개인정보 수집 및 이용에 대하여 제공을</span>
-                <div 
-                  onClick={() => setFormData({...formData, personalInfoAgree: true})}
-                  className="w-5 h-5 border-2 border-black cursor-pointer"
-                  style={{background: formData.personalInfoAgree === true ? "#0088FF" : "white"}}
-                />
-                <span>동의합니다.</span>
-                <div 
-                  onClick={() => setFormData({...formData, personalInfoAgree: false})}
-                  className="w-5 h-5 border-2 border-black cursor-pointer"
-                  style={{background: formData.personalInfoAgree === false ? "#FF5F57" : "white"}}
-                />
-                <span>동의하지 않습니다.</span>
+                <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-1">
+                    <div 
+                      onClick={() => setFormData({...formData, personalInfoAgree: true})}
+                      className="w-5 h-5 border-2 border-black cursor-pointer"
+                      style={{background: formData.personalInfoAgree === true ? "#0088FF" : "white"}}
+                    />
+                    <span>동의합니다</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <div 
+                      onClick={() => setFormData({...formData, personalInfoAgree: false})}
+                      className="w-5 h-5 border-2 border-black cursor-pointer"
+                      style={{background: formData.personalInfoAgree === false ? "#FF5F57" : "white"}}
+                    />
+                    <span>동의하지 않습니다</span>
+                  </div>
+                </div>
               </div>
               
               <div className="bg-white p-3 mb-3">
@@ -185,20 +193,26 @@ export default function ApplicationForm() {
                 </div>
               </div>
               
-              <div className="flex justify-end items-center gap-2 text-sm font-semibold mb-3">
+              <div className="flex flex-col items-end gap-2 text-sm font-semibold mb-3">
                 <span>개인정보 수집 및 이용에 대하여 제공을</span>
-                <div 
-                  onClick={() => setFormData({...formData, marketingAgree: true})}
-                  className="w-5 h-5 border-2 border-black cursor-pointer"
-                  style={{background: formData.marketingAgree === true ? "#0088FF" : "white"}}
-                />
-                <span>동의합니다.</span>
-                <div 
-                  onClick={() => setFormData({...formData, marketingAgree: false})}
-                  className="w-5 h-5 border-2 border-black cursor-pointer"
-                  style={{background: formData.marketingAgree === false ? "#FF5F57" : "white"}}
-                />
-                <span>동의하지 않습니다.</span>
+                <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-1">
+                    <div 
+                      onClick={() => setFormData({...formData, marketingAgree: true})}
+                      className="w-5 h-5 border-2 border-black cursor-pointer"
+                      style={{background: formData.marketingAgree === true ? "#0088FF" : "white"}}
+                    />
+                    <span>동의합니다</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <div 
+                      onClick={() => setFormData({...formData, marketingAgree: false})}
+                      className="w-5 h-5 border-2 border-black cursor-pointer"
+                      style={{background: formData.marketingAgree === false ? "#FF5F57" : "white"}}
+                    />
+                    <span>동의하지 않습니다</span>
+                  </div>
+                </div>
               </div>
               
               <div className="bg-white p-3 mb-3">
@@ -210,37 +224,47 @@ export default function ApplicationForm() {
                 </div>
               </div>
               
-              <div className="flex justify-end items-center gap-2 text-sm font-semibold mb-3">
+              <div className="flex flex-col items-end gap-2 text-sm font-semibold mb-3">
                 <span>개인정보 수집 및 이용에 대하여 제공을</span>
-                <div 
-                  onClick={() => setFormData({...formData, resultUseAgree: true})}
-                  className="w-5 h-5 border-2 border-black cursor-pointer"
-                  style={{background: formData.resultUseAgree === true ? "#0088FF" : "white"}}
-                />
-                <span>동의합니다.</span>
-                <div 
-                  onClick={() => setFormData({...formData, resultUseAgree: false})}
-                  className="w-5 h-5 border-2 border-black cursor-pointer"
-                  style={{background: formData.resultUseAgree === false ? "#FF5F57" : "white"}}
-                />
-                <span>동의하지 않습니다.</span>
+                <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-1">
+                    <div 
+                      onClick={() => setFormData({...formData, resultUseAgree: true})}
+                      className="w-5 h-5 border-2 border-black cursor-pointer"
+                      style={{background: formData.resultUseAgree === true ? "#0088FF" : "white"}}
+                    />
+                    <span>동의합니다</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <div 
+                      onClick={() => setFormData({...formData, resultUseAgree: false})}
+                      className="w-5 h-5 border-2 border-black cursor-pointer"
+                      style={{background: formData.resultUseAgree === false ? "#FF5F57" : "white"}}
+                    />
+                    <span>동의하지 않습니다</span>
+                  </div>
+                </div>
               </div>
               
-              <div className="flex flex-wrap justify-end items-center gap-2 text-sm font-semibold">
-                <span>「개인정보보호법」 등 관련 법규에 의거하여 본인의 개인정보 수집•이용•제공에 관하여</span>
-                <div className="flex items-center gap-2">
-                  <div 
-                    onClick={() => setFormData({...formData, allAgree: true})}
-                    className="w-5 h-5 border-2 border-black cursor-pointer"
-                    style={{background: formData.allAgree === true ? "#0088FF" : "white"}}
-                  />
-                  <span>동의합니다.</span>
-                  <div 
-                    onClick={() => setFormData({...formData, allAgree: false})}
-                    className="w-5 h-5 border-2 border-black cursor-pointer"
-                    style={{background: formData.allAgree === false ? "#FF5F57" : "white"}}
-                  />
-                  <span>동의하지 않습니다.</span>
+              <div className="flex flex-col items-end gap-2 text-sm font-semibold">
+                <span className="text-right">「개인정보보호법」 등 관련 법규에 의거하여 본인의 개인정보 수집•이용•제공에 관하여</span>
+                <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-1">
+                    <div 
+                      onClick={() => setFormData({...formData, allAgree: true})}
+                      className="w-5 h-5 border-2 border-black cursor-pointer"
+                      style={{background: formData.allAgree === true ? "#0088FF" : "white"}}
+                    />
+                    <span>동의합니다</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <div 
+                      onClick={() => setFormData({...formData, allAgree: false})}
+                      className="w-5 h-5 border-2 border-black cursor-pointer"
+                      style={{background: formData.allAgree === false ? "#FF5F57" : "white"}}
+                    />
+                    <span>동의하지 않습니다</span>
+                  </div>
                 </div>
               </div>
             </div>
