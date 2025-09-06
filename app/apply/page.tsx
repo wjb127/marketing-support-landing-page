@@ -52,7 +52,7 @@ export default function ApplyPage() {
               <div className="flex-1 px-2 lg:px-5 py-2.5">
                 <div className="text-black text-sm sm:text-base lg:text-lg leading-relaxed">
                   <span className="font-bold">관악구 소재 </span>
-                  <span className="font-bold text-[#0088FF] underline">소상공인(상시근로자수 '5인 미만') 가게</span>
+                  <span className="font-bold text-[#0088FF] underline">소상공인(상시근로자수 &apos;5인 미만&apos;) 가게</span>
                   <span className="font-bold">로서, 온라인 홍보방법이 매장환경이 매출에 큰 영향을 미치는 가게 입니까? </span>
                   <span className="font-medium block mt-2 text-xs sm:text-sm lg:text-lg">※ 매장형이 아닌 업체(예 - 사무실, 병원 등) 지원 불가 ※ 광업•제조업•건설 및 운수업: 상시근로자 10명 미만</span>
                 </div>
@@ -254,7 +254,7 @@ export default function ApplyPage() {
             <div className="p-4 sm:p-6 lg:px-[30px] lg:py-2.5">
               <div className="text-sm sm:text-base lg:text-lg leading-relaxed">
                 <span className="text-[#0088FF] font-normal">※ </span>
-                <span className="text-[#0088FF] font-bold">선택사항에 '아니요'가 있을 경우, 사업에 선정되지 않을 수 있습니다.</span>
+                <span className="text-[#0088FF] font-bold">선택사항에 &apos;아니요&apos;가 있을 경우, 사업에 선정되지 않을 수 있습니다.</span>
                 <br/>
                 <span className="text-[#0088FF] font-normal">※ </span>
                 <span className="text-[#0088FF] font-bold">신청 시, 사업자등록증을 필수 제출하여야 하며, 대표자가 관악구 거주자일 경우 주민등록초본(*현재 주소지만 포함, 주민등록번호 미포함)을 제출해야 합니다.</span>

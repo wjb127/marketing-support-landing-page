@@ -608,7 +608,7 @@ export default function ApplicationForm() {
                       </div>
                     </div>
                     <div className="flex flex-col gap-2">
-                      <span className="text-xs font-medium">주민등록초본(대표자의 주민등록이 관악구에 등록된 경우)<br/>※ '과거주소', '주민등록번호 뒷자리' 미포함</span>
+                      <span className="text-xs font-medium">주민등록초본(대표자의 주민등록이 관악구에 등록된 경우)<br/>※ &apos;과거주소&apos;, &apos;주민등록번호 뒷자리&apos; 미포함</span>
                       <div className="flex items-center gap-2">
                         <div className="flex-1 px-2 py-1 border border-[#D9D9D9] text-xs text-gray-600">
                           {formData.residentCert ? formData.residentCert.name : "선택된 파일 없음"}
