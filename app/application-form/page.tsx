@@ -1,11 +1,22 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { InformationSection } from "@/components/sections/InformationSection";
 import { useRouter } from "next/navigation";
 
 export default function ApplicationForm() {
   const router = useRouter();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
   
   const [formData, setFormData] = useState({
     // 개인정보 동의
@@ -109,7 +120,524 @@ export default function ApplicationForm() {
       <div className="bg-white w-full max-w-[1440px] mx-auto">
         <InformationSection />
         
-        <div style={{width: "1440px", height: "3330px", paddingLeft: "35px", paddingRight: "35px", paddingTop: "20px", paddingBottom: "20px", overflow: "hidden", borderRadius: "2px", flexDirection: "column", justifyContent: "flex-start", alignItems: "center", gap: "10px", display: "inline-flex"}}>
+        {/* Mobile Version */}
+        {isMobile ? (
+          <div className="w-full px-4 py-5">
+            <div className="w-full py-5">
+              <div className="text-center">
+                <span className="text-[#0088FF] text-lg font-medium leading-7">2025년 소상공인 온라인 마케팅 홍보 지원사업<br/></span>
+                <span className="text-black text-xl font-bold leading-8">지원서 작성</span>
+              </div>
+            </div>
+            
+            <div className="w-full bg-[#F8F6F6] p-4 mb-5">
+              <div className="text-left text-black text-base font-bold mb-3">개인정보 수집•이용•제공에 관한 동의서</div>
+              <div className="text-sm text-black mb-4">관악구 소상공인 온라인 마케팅 홍보지원 사업 관련하여 개인정보를 수집•이용 및 제 3자 제공이 필요하여 개인정보보호법에 따라 신청인의 개인정보 동의를 구합니다.</div>
+              
+              <div className="bg-white p-3 mb-3">
+                <div className="text-sm font-semibold mb-2">□ 개인정보 수집•이용에 따른 동의</div>
+                <div className="text-xs space-y-2">
+                  <div>
+                    <div className="font-semibold">개인정보의 수집•이용•제공 목적</div>
+                    <div className="pl-4">
+                      ① 사업 참여가게 선정심사에 필요한 자격, 참여배제 사유 조회<br/>
+                      ② 사업 홍보 및 사업종료 후 매출변화 등 사업효과 조사
+                    </div>
+                  </div>
+                  <div>
+                    <div className="font-semibold">수집항목</div>
+                    <div className="pl-4">
+                      ① 인적사항 : 성명, 생년월일, 전화번호(자택, 휴대폰), 성별<br/>
+                      ② 선정심사 : 가게명, 사업자등록번호, 설립일자, 연매출액, 주소, 연락처
+                    </div>
+                  </div>
+                  <div>
+                    <span className="font-semibold">보유 및 이용 기간:</span> 사업 종료일로부터 5년
+                  </div>
+                  <div>
+                    <span className="font-semibold">동의 거부권 및 거부에 따른 불이익:</span> 귀하는 개인정보를 수집•이용에 대한 동의를 거부할 수 있습니다. 다만 동의가 없을 경우 신청자격을 확인할 수 없어 사업에 참여할 수 없습니다.
+                  </div>
+                </div>
+              </div>
+              
+              <div className="flex justify-end items-center gap-2 text-sm font-semibold mb-3">
+                <span>개인정보 수집 및 이용에 대하여 제공을</span>
+                <div 
+                  onClick={() => setFormData({...formData, personalInfoAgree: true})}
+                  className="w-5 h-5 border-2 border-black cursor-pointer"
+                  style={{background: formData.personalInfoAgree === true ? "#0088FF" : "white"}}
+                />
+                <span>동의합니다.</span>
+                <div 
+                  onClick={() => setFormData({...formData, personalInfoAgree: false})}
+                  className="w-5 h-5 border-2 border-black cursor-pointer"
+                  style={{background: formData.personalInfoAgree === false ? "#FF5F57" : "white"}}
+                />
+                <span>동의하지 않습니다.</span>
+              </div>
+              
+              <div className="bg-white p-3 mb-3">
+                <div className="text-xs mb-2">□ 코로나19 종합정보, 공공일자리, 복지•건강•문화 등 각종 구정정보 수시제공 동의</div>
+                <div className="text-xs space-y-1">
+                  <div><span className="font-semibold">개인정보의 수집•이용•제공 목적:</span> 다양한 구정 정보 제공을 위한 문자, 알림톡 등 발송</div>
+                  <div className="pl-4">※ 개인정보 수집•이용에 대한 동의를 거부할 수 있으며, 수집된 정보는 위 목적 이외의 용도로는 이용되지 않습니다.</div>
+                  <div><span className="font-semibold">수집항목:</span> 휴대전화번호 (보유기간 5년)</div>
+                </div>
+              </div>
+              
+              <div className="flex justify-end items-center gap-2 text-sm font-semibold mb-3">
+                <span>개인정보 수집 및 이용에 대하여 제공을</span>
+                <div 
+                  onClick={() => setFormData({...formData, marketingAgree: true})}
+                  className="w-5 h-5 border-2 border-black cursor-pointer"
+                  style={{background: formData.marketingAgree === true ? "#0088FF" : "white"}}
+                />
+                <span>동의합니다.</span>
+                <div 
+                  onClick={() => setFormData({...formData, marketingAgree: false})}
+                  className="w-5 h-5 border-2 border-black cursor-pointer"
+                  style={{background: formData.marketingAgree === false ? "#FF5F57" : "white"}}
+                />
+                <span>동의하지 않습니다.</span>
+              </div>
+              
+              <div className="bg-white p-3 mb-3">
+                <div className="text-xs mb-2">□ 사업 결과물의 활용</div>
+                <div className="text-xs space-y-1">
+                  <div><span className="font-semibold">개인정보의 수집•이용•제공 목적:</span> 해당 지원사업의 결과물에 대한 홍보 관련 촬영, 인터뷰 등</div>
+                  <div className="pl-4">※ 개인정보 수집•이용에 대한 동의를 거부할 수 있으며, 수집된 정보는 위 목적 이외의 용도로 이용되지 않습니다.</div>
+                  <div><span className="font-semibold">수집항목:</span> 가게명, 사업자등록번호, 주소 (보유기간: 사업종료일로부터 5년)</div>
+                </div>
+              </div>
+              
+              <div className="flex justify-end items-center gap-2 text-sm font-semibold mb-3">
+                <span>개인정보 수집 및 이용에 대하여 제공을</span>
+                <div 
+                  onClick={() => setFormData({...formData, resultUseAgree: true})}
+                  className="w-5 h-5 border-2 border-black cursor-pointer"
+                  style={{background: formData.resultUseAgree === true ? "#0088FF" : "white"}}
+                />
+                <span>동의합니다.</span>
+                <div 
+                  onClick={() => setFormData({...formData, resultUseAgree: false})}
+                  className="w-5 h-5 border-2 border-black cursor-pointer"
+                  style={{background: formData.resultUseAgree === false ? "#FF5F57" : "white"}}
+                />
+                <span>동의하지 않습니다.</span>
+              </div>
+              
+              <div className="flex flex-wrap justify-end items-center gap-2 text-sm font-semibold">
+                <span>「개인정보보호법」 등 관련 법규에 의거하여 본인의 개인정보 수집•이용•제공에 관하여</span>
+                <div className="flex items-center gap-2">
+                  <div 
+                    onClick={() => setFormData({...formData, allAgree: true})}
+                    className="w-5 h-5 border-2 border-black cursor-pointer"
+                    style={{background: formData.allAgree === true ? "#0088FF" : "white"}}
+                  />
+                  <span>동의합니다.</span>
+                  <div 
+                    onClick={() => setFormData({...formData, allAgree: false})}
+                    className="w-5 h-5 border-2 border-black cursor-pointer"
+                    style={{background: formData.allAgree === false ? "#FF5F57" : "white"}}
+                  />
+                  <span>동의하지 않습니다.</span>
+                </div>
+              </div>
+            </div>
+            
+            <div className="text-center text-xl font-bold mb-5">신청 정보 입력</div>
+            
+            <div className="border-2 border-[#8C8C8C] p-4">
+              <div className="text-base font-semibold mb-3">신청자 정보</div>
+              
+              <div className="space-y-3 mb-5">
+                <div className="flex flex-col gap-2">
+                  <div className="text-sm font-medium">대표자명</div>
+                  <input
+                    type="text"
+                    value={formData.name}
+                    onChange={(e) => setFormData({...formData, name: e.target.value})}
+                    placeholder="신청자 이름을 입력해주세요."
+                    className="w-full h-10 px-2 border border-[#D9D9D9] text-sm"
+                  />
+                </div>
+                
+                <div className="flex flex-col gap-2">
+                  <div className="text-sm font-medium">생년월일</div>
+                  <input
+                    type="text"
+                    value={formData.birthDate}
+                    onChange={(e) => setFormData({...formData, birthDate: e.target.value})}
+                    placeholder="예) 000000"
+                    className="w-full h-10 px-2 border border-[#D9D9D9] text-sm"
+                  />
+                </div>
+                
+                <div className="flex flex-col gap-2">
+                  <div className="text-sm font-medium">휴대폰번호</div>
+                  <input
+                    type="text"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                    placeholder="예) 000-0000-0000"
+                    className="w-full h-10 px-2 border border-[#D9D9D9] text-sm"
+                  />
+                </div>
+                
+                <div className="flex flex-col gap-2">
+                  <div className="text-sm font-medium">관악구 거주 여부</div>
+                  <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-2">
+                      <div 
+                        onClick={() => setFormData({...formData, gwanakResident: true})}
+                        className="w-6 h-6 border-2 border-[#404040] cursor-pointer"
+                        style={{background: formData.gwanakResident === true ? "#0088FF" : "white"}}
+                      />
+                      <span className="text-sm">거주</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div 
+                        onClick={() => setFormData({...formData, gwanakResident: false})}
+                        className="w-6 h-6 border-2 border-[#404040] cursor-pointer"
+                        style={{background: formData.gwanakResident === false ? "#0088FF" : "white"}}
+                      />
+                      <span className="text-sm">미거주</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="flex flex-col gap-2">
+                  <div className="text-sm font-medium">골목상권 상인회 가입여부</div>
+                  <div className="flex flex-col gap-2">
+                    <div className="flex items-center gap-2">
+                      <div 
+                        onClick={() => setFormData({...formData, merchantAssociation: "joined"})}
+                        className="w-6 h-6 border-2 border-[#404040] cursor-pointer"
+                        style={{background: formData.merchantAssociation === "joined" ? "#0088FF" : "white"}}
+                      />
+                      <span className="text-sm">가입</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div 
+                        onClick={() => setFormData({...formData, merchantAssociation: "notJoined"})}
+                        className="w-6 h-6 border-2 border-[#404040] cursor-pointer"
+                        style={{background: formData.merchantAssociation === "notJoined" ? "#0088FF" : "white"}}
+                      />
+                      <span className="text-sm">미가입</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div 
+                        onClick={() => setFormData({...formData, merchantAssociation: "willJoin"})}
+                        className="w-6 h-6 border-2 border-[#404040] cursor-pointer"
+                        style={{background: formData.merchantAssociation === "willJoin" ? "#0088FF" : "white"}}
+                      />
+                      <span className="text-sm">가입예정(가입의사 있음)</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="text-base font-semibold mb-3">신청 내용</div>
+              
+              <div className="space-y-3">
+                <div className="flex flex-col gap-2">
+                  <div className="text-sm font-medium">가 게 명</div>
+                  <input
+                    type="text"
+                    value={formData.storeName}
+                    onChange={(e) => setFormData({...formData, storeName: e.target.value})}
+                    placeholder="가게명을 작성해주세요."
+                    className="w-full h-10 px-2 border border-[#D9D9D9] text-sm"
+                  />
+                </div>
+                
+                <div className="flex flex-col gap-2">
+                  <div className="text-sm font-medium">사업자등록번호</div>
+                  <input
+                    type="text"
+                    value={formData.businessNumber}
+                    onChange={(e) => setFormData({...formData, businessNumber: e.target.value})}
+                    placeholder="000-00-00000"
+                    className="w-full h-10 px-2 border border-[#D9D9D9] text-sm"
+                  />
+                </div>
+                
+                <div className="flex flex-col gap-2">
+                  <div className="text-sm font-medium">사업장 주소</div>
+                  <div className="flex gap-2">
+                    <div className="flex-1 h-10 border border-[#D9D9D9]"></div>
+                    <div className="px-4 h-10 border border-[#D9D9D9] flex items-center justify-center cursor-pointer">
+                      <span className="text-sm font-semibold">검색</span>
+                    </div>
+                  </div>
+                  <input
+                    type="text"
+                    value={formData.address}
+                    onChange={(e) => setFormData({...formData, address: e.target.value})}
+                    placeholder="주소"
+                    className="w-full h-10 px-2 border border-[#D9D9D9] text-sm"
+                  />
+                  <input
+                    type="text"
+                    value={formData.detailAddress}
+                    onChange={(e) => setFormData({...formData, detailAddress: e.target.value})}
+                    placeholder="상세주소"
+                    className="w-full h-10 px-2 border border-[#D9D9D9] text-sm"
+                  />
+                </div>
+                
+                <div className="flex flex-col gap-2">
+                  <div className="text-sm font-medium">이메일 주소</div>
+                  <input
+                    type="email"
+                    value={formData.email}
+                    onChange={(e) => setFormData({...formData, email: e.target.value})}
+                    placeholder="있을 경우 기재해 주세요."
+                    className="w-full h-10 px-2 border border-[#D9D9D9] text-sm"
+                  />
+                </div>
+                
+                <div className="flex flex-col gap-2">
+                  <div className="text-sm font-medium">주 고객층 연령대</div>
+                  <div className="grid grid-cols-2 gap-2">
+                    <div className="flex items-center gap-2">
+                      <div 
+                        onClick={() => {
+                          const newAgeGroup = [...formData.ageGroup];
+                          if (newAgeGroup.includes("10-20")) {
+                            setFormData({...formData, ageGroup: newAgeGroup.filter(age => age !== "10-20")});
+                          } else {
+                            setFormData({...formData, ageGroup: [...newAgeGroup, "10-20"]});
+                          }
+                        }}
+                        className="w-6 h-6 border-2 border-[#404040] cursor-pointer"
+                        style={{background: formData.ageGroup.includes("10-20") ? "#0088FF" : "white"}}
+                      />
+                      <span className="text-sm">10~20대</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div 
+                        onClick={() => {
+                          const newAgeGroup = [...formData.ageGroup];
+                          if (newAgeGroup.includes("20-30")) {
+                            setFormData({...formData, ageGroup: newAgeGroup.filter(age => age !== "20-30")});
+                          } else {
+                            setFormData({...formData, ageGroup: [...newAgeGroup, "20-30"]});
+                          }
+                        }}
+                        className="w-6 h-6 border-2 border-[#404040] cursor-pointer"
+                        style={{background: formData.ageGroup.includes("20-30") ? "#0088FF" : "white"}}
+                      />
+                      <span className="text-sm">20~30대</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div 
+                        onClick={() => {
+                          const newAgeGroup = [...formData.ageGroup];
+                          if (newAgeGroup.includes("30-40")) {
+                            setFormData({...formData, ageGroup: newAgeGroup.filter(age => age !== "30-40")});
+                          } else {
+                            setFormData({...formData, ageGroup: [...newAgeGroup, "30-40"]});
+                          }
+                        }}
+                        className="w-6 h-6 border-2 border-[#404040] cursor-pointer"
+                        style={{background: formData.ageGroup.includes("30-40") ? "#0088FF" : "white"}}
+                      />
+                      <span className="text-sm">30대~40대</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div 
+                        onClick={() => {
+                          const newAgeGroup = [...formData.ageGroup];
+                          if (newAgeGroup.includes("50-60")) {
+                            setFormData({...formData, ageGroup: newAgeGroup.filter(age => age !== "50-60")});
+                          } else {
+                            setFormData({...formData, ageGroup: [...newAgeGroup, "50-60"]});
+                          }
+                        }}
+                        className="w-6 h-6 border-2 border-[#404040] cursor-pointer"
+                        style={{background: formData.ageGroup.includes("50-60") ? "#0088FF" : "white"}}
+                      />
+                      <span className="text-sm">50대~60대</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div 
+                        onClick={() => {
+                          const newAgeGroup = [...formData.ageGroup];
+                          if (newAgeGroup.includes("all")) {
+                            setFormData({...formData, ageGroup: newAgeGroup.filter(age => age !== "all")});
+                          } else {
+                            setFormData({...formData, ageGroup: [...newAgeGroup, "all"]});
+                          }
+                        }}
+                        className="w-6 h-6 border-2 border-[#404040] cursor-pointer"
+                        style={{background: formData.ageGroup.includes("all") ? "#0088FF" : "white"}}
+                      />
+                      <span className="text-sm">전 연령층</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="flex flex-col gap-2">
+                  <div className="text-sm font-medium">SNS 보유 현황</div>
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-2">
+                      <div className="w-24 px-2 py-1 border border-[#D9D9D9] text-center text-sm">인스타그램</div>
+                      <input
+                        type="text"
+                        value={formData.instagram}
+                        onChange={(e) => setFormData({...formData, instagram: e.target.value})}
+                        placeholder="있을 경우 기재해 주세요."
+                        className="flex-1 h-10 px-2 border border-[#D9D9D9] text-sm"
+                      />
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-24 px-2 py-1 border border-[#D9D9D9] text-center text-sm">페이스북</div>
+                      <input
+                        type="text"
+                        value={formData.facebook}
+                        onChange={(e) => setFormData({...formData, facebook: e.target.value})}
+                        placeholder="있을 경우 기재해 주세요."
+                        className="flex-1 h-10 px-2 border border-[#D9D9D9] text-sm"
+                      />
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-24 px-2 py-1 border border-[#D9D9D9] text-center text-sm">블로그</div>
+                      <input
+                        type="text"
+                        value={formData.blog}
+                        onChange={(e) => setFormData({...formData, blog: e.target.value})}
+                        placeholder="있을 경우 기재해 주세요."
+                        className="flex-1 h-10 px-2 border border-[#D9D9D9] text-sm"
+                      />
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-24 px-2 py-1 border border-[#D9D9D9] text-center text-sm">유튜브</div>
+                      <input
+                        type="text"
+                        value={formData.youtube}
+                        onChange={(e) => setFormData({...formData, youtube: e.target.value})}
+                        placeholder="있을 경우 기재해 주세요."
+                        className="flex-1 h-10 px-2 border border-[#D9D9D9] text-sm"
+                      />
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-24 px-2 py-1 border border-[#D9D9D9] text-center text-sm">기타</div>
+                      <input
+                        type="text"
+                        value={formData.other}
+                        onChange={(e) => setFormData({...formData, other: e.target.value})}
+                        placeholder="있을 경우 기재해 주세요."
+                        className="flex-1 h-10 px-2 border border-[#D9D9D9] text-sm"
+                      />
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="flex flex-col gap-2">
+                  <div className="text-sm font-medium">지원 동기</div>
+                  <textarea
+                    value={formData.motivation}
+                    onChange={(e) => setFormData({...formData, motivation: e.target.value})}
+                    placeholder="지원동기를 자유롭게 작성해주세요."
+                    className="w-full h-32 p-2 border border-[#D9D9D9] text-sm resize-none"
+                  />
+                </div>
+                
+                <div className="flex flex-col gap-2">
+                  <div className="text-sm font-medium">가게 및 판매 물품 소개</div>
+                  <textarea
+                    value={formData.storeIntro}
+                    onChange={(e) => setFormData({...formData, storeIntro: e.target.value})}
+                    placeholder="점포 특성 및 주력 제품(음식, 서비스 등)에 대한 소개주세요."
+                    className="w-full h-24 p-2 border border-[#D9D9D9] text-sm resize-none"
+                  />
+                </div>
+                
+                <div className="flex flex-col gap-2">
+                  <div className="text-sm font-medium">홍보 영상 제작 아이디어</div>
+                  <textarea
+                    value={formData.videoIdea}
+                    onChange={(e) => setFormData({...formData, videoIdea: e.target.value})}
+                    placeholder="본인이 희망하는 콘텐츠 제작 방향을 작성해주세요.(예: 코믹버전, 먹방, 상품안내 등)"
+                    className="w-full h-24 p-2 border border-[#D9D9D9] text-sm resize-none"
+                  />
+                </div>
+                
+                <div className="flex flex-col gap-2">
+                  <div className="text-sm font-medium">제출서류</div>
+                  <div className="space-y-2">
+                    <div className="flex flex-col gap-2">
+                      <span className="text-xs font-medium">사업자등록증 사본</span>
+                      <div className="flex items-center gap-2">
+                        <div className="flex-1 px-2 py-1 border border-[#D9D9D9] text-xs text-gray-600">
+                          {formData.businessLicense ? formData.businessLicense.name : "선택된 파일 없음"}
+                        </div>
+                        <label className="px-4 py-1 bg-[#D9D9D9] border border-[#404040] cursor-pointer">
+                          <input
+                            type="file"
+                            onChange={(e) => setFormData({...formData, businessLicense: e.target.files?.[0] || null})}
+                            className="hidden"
+                          />
+                          <span className="text-sm">파일선택</span>
+                        </label>
+                      </div>
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      <span className="text-xs font-medium">주민등록초본(대표자의 주민등록이 관악구에 등록된 경우)<br/>※ '과거주소', '주민등록번호 뒷자리' 미포함</span>
+                      <div className="flex items-center gap-2">
+                        <div className="flex-1 px-2 py-1 border border-[#D9D9D9] text-xs text-gray-600">
+                          {formData.residentCert ? formData.residentCert.name : "선택된 파일 없음"}
+                        </div>
+                        <label className="px-4 py-1 bg-[#D9D9D9] border border-[#404040] cursor-pointer">
+                          <input
+                            type="file"
+                            onChange={(e) => setFormData({...formData, residentCert: e.target.files?.[0] || null})}
+                            className="hidden"
+                          />
+                          <span className="text-sm">파일선택</span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="pt-8 pb-5 space-y-5">
+                  <div className="bg-[#F8F6F6] p-4 border border-[#8C8C8C]">
+                    <div className="text-sm">
+                      제출된 서류에 기재된 내용이 사실과 다를 경우 참여자 선정을 취소할 수 있으며, 최종 선발자 공지이후라도 자격조건 검증 과정 등을 통하여 결격 사유가 발견될 경우 선발이 취소될 수 있습니다. 상기 신청자는 <span className="font-bold">{"<"}관악구 소상공인 온라인 마케팅 홍보지원 사업{">"}</span>에 지원하고자 신청서를 제출하며, 기재 내용이 사실과 다름없음을 확인합니다.
+                    </div>
+                  </div>
+                  
+                  <div className="flex justify-center">
+                    <div 
+                      onClick={handleSubmit}
+                      className="px-12 py-3 bg-[#0088FF] rounded cursor-pointer"
+                    >
+                      <span className="text-white text-lg font-bold">지원하기</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            {/* 최하단 섹션 */}
+            <div className="flex flex-col items-center gap-4 py-8 px-4 bg-white">
+              <img 
+                className="h-10 object-contain" 
+                alt="관악구 CI 가로형" 
+                src="/images/관악구CI(가로형).jpg" 
+              />
+              <img 
+                className="h-10 object-contain" 
+                alt="추가 이미지" 
+                src="/images/image.png" 
+              />
+            </div>
+          </div>
+        ) : (
+          /* Desktop Version - Keep exactly as is with inline styles */
+          <div style={{width: "1440px", height: "3330px", paddingLeft: "35px", paddingRight: "35px", paddingTop: "20px", paddingBottom: "20px", overflow: "hidden", borderRadius: "2px", flexDirection: "column", justifyContent: "flex-start", alignItems: "center", gap: "10px", display: "inline-flex"}}>
           <div style={{width: "1228px", height: "175px", paddingLeft: "35px", paddingRight: "35px", paddingTop: "20px", paddingBottom: "20px", overflow: "hidden", justifyContent: "center", alignItems: "center", gap: "10px", display: "inline-flex"}}>
             <div style={{textAlign: "center", justifyContent: "center", display: "flex", flexDirection: "column"}}>
               <span style={{color: "#0088FF", fontSize: "24px", fontFamily: "Pretendard", fontWeight: 500, lineHeight: "40px", wordWrap: "break-word"}}>2025년 소상공인 온라인 마케팅 홍보 지원사업<br/></span>
@@ -737,23 +1265,24 @@ export default function ApplicationForm() {
               </div>
             </div>
           </div>
-        </div>
-        
-        {/* 최하단 섹션 */}
-        <div style={{display: "flex", width: "1440px", height: "192px", padding: "40px 200px", alignItems: "flex-start", justifyContent: "flex-start", gap: "10px", flexShrink: 0, background: "white"}}>
-          <div style={{display: "flex", flexDirection: "column", gap: "16px"}}>
-            <img 
-              style={{height: "50px", objectFit: "contain"}} 
-              alt="관악구 CI 가로형" 
-              src="/images/관악구CI(가로형).jpg" 
-            />
-            <img 
-              style={{height: "50px", objectFit: "contain"}} 
-              alt="추가 이미지" 
-              src="/images/image.png" 
-            />
+          
+          {/* 최하단 섹션 */}
+          <div style={{display: "flex", width: "1440px", height: "192px", padding: "40px 200px", alignItems: "flex-start", justifyContent: "flex-start", gap: "10px", flexShrink: 0, background: "white"}}>
+            <div style={{display: "flex", flexDirection: "column", gap: "16px"}}>
+              <img 
+                style={{height: "50px", objectFit: "contain"}} 
+                alt="관악구 CI 가로형" 
+                src="/images/관악구CI(가로형).jpg" 
+              />
+              <img 
+                style={{height: "50px", objectFit: "contain"}} 
+                alt="추가 이미지" 
+                src="/images/image.png" 
+              />
+            </div>
           </div>
         </div>
+        )}
       </div>
     </main>
   );
