@@ -17,4 +17,24 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+/* 모바일 터치 최적화 */
+button, a, [role="button"] {
+  touch-action: manipulation;
+}
+
+/* 스크롤 성능 향상 */
+* {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* 텍스트 선택 방지 (필요한 경우) */
+.no-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }

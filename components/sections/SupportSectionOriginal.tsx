@@ -92,63 +92,63 @@ export const SupportSectionOriginal = () => {
   return (
     <section className="w-full overflow-hidden">
       {/* Hero Section - 맨 위 */}
-      <div className="w-full h-96 bg-sky-100 overflow-hidden relative">
+      <div className="w-full min-h-[250px] sm:min-h-[320px] lg:h-96 bg-sky-100 relative flex items-center justify-center">
         <Image 
-          className="w-[667px] h-96 left-[409px] top-[6px] absolute" 
+          className="absolute inset-0 w-full h-full object-cover opacity-50 lg:opacity-100" 
           src="/images/CK_ti069a38701.jpg"
           alt="관악구 배경"
           width={667}
           height={444}
           priority
         />
-        <div className="p-2.5 left-[510px] top-[130px] absolute inline-flex justify-center items-center gap-2.5">
-          <div className="text-center justify-start">
-            <span className="text-black text-xl font-light font-['Pretendard']">
-              스마트플레이스 등 최적화, 맞춤형 홍보 콘텐츠 제작,<br/>
-              온라인 키워드 홍보 지원 등
-            </span>
-            <span className="text-black text-xl font-medium font-['Pretendard']">
-              (점포당 최대 150만원)
-            </span>
+        <div className="relative z-10 px-4 sm:px-6 lg:px-0 text-center lg:text-left">
+          <div className="mb-4 lg:mb-6">
+            <h1 className="text-xl sm:text-2xl lg:text-3xl font-medium font-['Pretendard'] text-black mb-4">
+              2025년 관악구 소상공인<br/>
+              온라인 마케팅 홍보지원 사업 안내
+            </h1>
+            <div className="w-full lg:w-96 h-0 mx-auto lg:mx-0 border-t border-black mb-4"></div>
+            <div>
+              <span className="text-sm sm:text-base lg:text-xl font-light font-['Pretendard'] text-black">
+                스마트플레이스 등 최적화, 맞춤형 홍보 콘텐츠 제작,<br className="hidden sm:block"/>
+                <span className="sm:hidden"> </span>온라인 키워드 홍보 지원 등
+              </span>
+              <span className="text-sm sm:text-base lg:text-xl font-medium font-['Pretendard'] text-black">
+                {" "}(점포당 최대 150만원)
+              </span>
+            </div>
           </div>
         </div>
-        <div className="p-2.5 left-[500px] top-[34px] absolute inline-flex justify-center items-center gap-2.5">
-          <div className="text-center justify-start text-black text-3xl font-medium font-['Pretendard']">
-            2025년 관악구 소상공인<br/>
-            온라인 마케팅 홍보지원 사업 안내
-          </div>
-        </div>
-        <div className="w-96 h-0 left-[510px] top-[130px] absolute outline outline-1 outline-offset-[-0.50px] outline-black"></div>
       </div>
 
       <main className="w-full bg-white">
-        <div className="flex flex-col items-center justify-center gap-[5px] px-[175px] py-2.5">
+        <div className="flex flex-col items-center justify-center gap-2 sm:gap-[5px] px-4 sm:px-8 lg:px-[175px] py-6 sm:py-4 lg:py-2.5">
           {programDetails.map((detail, index) => (
             <div
               key={index}
-              className={`w-[790px] ${index === 0 ? "h-10" : index === 1 ? "h-[154px]" : "h-[104px]"} relative`}
+              className={`w-full max-w-[790px] ${index === 0 ? "min-h-[80px] lg:h-10" : index === 1 ? "min-h-[200px] lg:h-[154px]" : "min-h-[140px] lg:h-[104px]"} flex flex-col lg:flex-row lg:relative`}
             >
-              <div className="flex w-40 h-[30px] items-center justify-center px-5 py-2.5 absolute top-[5px] left-0 bg-[#0088ff]">
-                <div className="[font-family:'Pretendard-Bold',Helvetica] font-bold text-white text-lg text-center whitespace-nowrap tracking-[0] leading-[normal]">
+              <div className="flex w-full lg:w-40 h-[40px] lg:h-[30px] items-center justify-center px-5 py-2.5 lg:absolute lg:top-[5px] lg:left-0 bg-[#0088ff] mb-2 lg:mb-0">
+                <div className="[font-family:'Pretendard-Bold',Helvetica] font-bold text-white text-base lg:text-lg text-center whitespace-nowrap tracking-[0] leading-[normal]">
                   {detail.label}
                 </div>
               </div>
 
               <div
-                className={`flex ${index === 1 ? "flex-col" : ""} w-[630px] ${index === 0 ? "h-10 items-center" : index === 1 ? "h-[154px] items-start" : "h-[104px] items-start"} px-5 py-2.5 absolute top-0 left-40 bg-white ${index > 1 ? "overflow-hidden" : ""}`}
+                className={`flex ${index === 1 ? "flex-col" : ""} w-full lg:w-[630px] ${index === 0 ? "min-h-[40px] lg:h-10 items-center" : index === 1 ? "min-h-[150px] lg:h-[154px] items-start" : "min-h-[100px] lg:h-[104px] items-start"} px-5 py-2.5 lg:absolute lg:top-0 lg:left-40 bg-white ${index > 1 ? "lg:overflow-hidden" : ""}`}
               >
                 {typeof detail.content === "string" ? (
-                  <div className="[font-family:'Pretendard-SemiBold',Helvetica] font-semibold text-black text-lg whitespace-nowrap tracking-[0] leading-[normal]">
+                  <div className="[font-family:'Pretendard-SemiBold',Helvetica] font-semibold text-black text-sm sm:text-base lg:text-lg tracking-[0] leading-[normal]">
                     {detail.content}
                   </div>
                 ) : (
                   <div
-                    className={`flex flex-col ${index === 1 ? "h-[135px]" : "h-[105px]"} items-start gap-[5px] w-full ${index > 1 ? "mb-[-10.00px]" : index === 1 ? "mb-[-1.00px]" : ""}`}
+                    className={`flex flex-col ${index === 1 ? "min-h-[135px] lg:h-[135px]" : "min-h-[105px] lg:h-[105px]"} items-start gap-[5px] w-full ${index > 1 ? "lg:mb-[-10.00px]" : index === 1 ? "lg:mb-[-1.00px]" : ""}`}
                   >
-                    <div className="[font-family:'Pretendard-Bold',Helvetica] font-bold text-black text-lg tracking-[0] leading-[normal] whitespace-nowrap">
+                    <div className="[font-family:'Pretendard-Bold',Helvetica] font-bold text-black text-sm sm:text-base lg:text-lg tracking-[0] leading-[normal]">
                       {detail.content.title}
                     </div>
-                    <div className="[font-family:'Pretendard-Regular',Helvetica] font-normal text-black text-lg tracking-[0] leading-[normal] w-full">
+                    <div className="[font-family:'Pretendard-Regular',Helvetica] font-normal text-black text-xs sm:text-sm lg:text-lg tracking-[0] leading-relaxed lg:leading-[normal] w-full">
                       {detail.content.details.map((item, itemIndex) => (
                         <span
                           key={itemIndex}
@@ -174,34 +174,37 @@ export const SupportSectionOriginal = () => {
           ))}
         </div>
 
-        <div className="flex items-center justify-center gap-5 px-[175px] py-5">
-          <div className="flex items-center gap-5 w-full max-w-[1090px]">
+        <div className="flex items-center justify-center px-4 sm:px-8 lg:px-[175px] py-8 lg:py-5">
+          <div className="flex flex-col lg:flex-row items-center gap-6 lg:gap-5 w-full max-w-[1090px]">
             {supportServices.map((service, index) => (
               <Card
                 key={index}
-                className={`w-[350px] h-[382px] ${service.cardBg} border-0 rounded-none`}
+                className={`w-full sm:max-w-[450px] lg:w-[350px] min-h-[320px] lg:h-[382px] ${service.cardBg} border-0 rounded-none`}
               >
                 <div
                   className={`flex w-full h-12 items-center justify-center gap-2.5 p-2.5 ${service.bgColor}`}
                 >
-                  <h3 className="[font-family:'Pretendard-Bold',Helvetica] font-bold text-white text-lg text-center whitespace-nowrap tracking-[0] leading-[normal]">
+                  <h3 className="[font-family:'Pretendard-Bold',Helvetica] font-bold text-white text-sm sm:text-base lg:text-lg text-center tracking-[0] leading-[normal]">
                     {service.title}
                   </h3>
                 </div>
 
-                <CardContent className="p-5">
+                <CardContent className="p-4 lg:p-5">
                   {service.hasImage && (
-                    <div className="flex flex-col w-full h-[179px] items-center justify-center gap-2.5 mb-4">
-                      <img
-                        className={`object-cover ${index === 1 ? "w-[220px] h-[135px]" : "w-[218px] h-[129px]"}`}
+                    <div className="flex flex-col w-full h-[140px] sm:h-[160px] lg:h-[179px] items-center justify-center gap-2.5 mb-4">
+                      <Image
+                        className={`object-contain ${index === 1 ? "max-w-[180px] sm:max-w-[200px] lg:w-[220px] h-auto max-h-[100px] sm:max-h-[120px] lg:h-[135px]" : "max-w-[180px] sm:max-w-[200px] lg:w-[218px] h-auto max-h-[100px] sm:max-h-[120px] lg:h-[129px]"}`}
                         alt={service.imageAlt}
                         src={service.imageSrc}
+                        width={220}
+                        height={135}
+                        loading="lazy"
                       />
                     </div>
                   )}
 
                   <div className="w-full">
-                    <div className="[font-family:'Pretendard-Regular',Helvetica] font-normal text-black text-sm tracking-[0] leading-5">
+                    <div className="[font-family:'Pretendard-Regular',Helvetica] font-normal text-black text-xs sm:text-sm tracking-[0] leading-relaxed lg:leading-5">
                       {service.content.map((item, itemIndex) => (
                         <span key={itemIndex}>
                           {item}
@@ -217,20 +220,26 @@ export const SupportSectionOriginal = () => {
         </div>
         
         {/* 공백 섹션 */}
-        <div className="h-[402px] w-full bg-white"></div>
+        <div className="h-[200px] sm:h-[300px] lg:h-[402px] w-full bg-white"></div>
         
-        {/* 추가 섹션 */}
-        <div className="flex w-[1440px] h-[192px] px-[200px] py-10 items-start justify-start gap-2.5 flex-shrink-0 bg-white">
-          <div className="flex flex-col gap-4">
-            <img 
-              className="h-[50px] object-contain" 
+        {/* 푸터 섹션 */}
+        <div className="flex w-full min-h-[150px] lg:h-[192px] px-4 sm:px-8 lg:px-[200px] py-8 lg:py-10 items-start justify-start gap-2.5 bg-white">
+          <div className="flex flex-col gap-3 lg:gap-4">
+            <Image 
+              className="h-[35px] sm:h-[40px] lg:h-[50px] w-auto object-contain" 
               alt="관악구 CI 가로형" 
-              src="/images/관악구CI(가로형).jpg" 
+              src="/images/관악구CI(가로형).jpg"
+              width={120}
+              height={50}
+              loading="lazy"
             />
-            <img 
-              className="h-[50px] object-contain" 
+            <Image 
+              className="h-[35px] sm:h-[40px] lg:h-[50px] w-auto object-contain" 
               alt="추가 이미지" 
-              src="/images/image.png" 
+              src="/images/image.png"
+              width={120}
+              height={50}
+              loading="lazy"
             />
           </div>
         </div>
